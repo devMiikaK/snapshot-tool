@@ -1,5 +1,8 @@
 # Snapshot-tool
 Lightweight snapshot tool for Windows
+
+![](photo.png)
+
 ## Features
 - Take snapshots fast with mouse click
 - Set fixed height and width dimensions
@@ -9,3 +12,5 @@ Lightweight snapshot tool for Windows
 
 ## Installation
 Either download the release or build it from source.
+
+![](photo2.png)
