@@ -15,7 +15,7 @@ namespace Snapshot_tool
         private bool isRunning = false;
         private bool isSettingHotkey = false;
         private int indexCounter = 0;
-        private Keys currentKey = Keys.S; //default key
+        private Keys currentKey = Keys.F8; //default key
 
         //window constructor
         public CaptureForm()
@@ -108,13 +108,14 @@ namespace Snapshot_tool
 
             try
             {
-                //move the overlay away for the pic
-                overlay.Location = new Point(-32000, -32000);
+                //move the box away for pic
+                overlay.Location = new Point(-99999, -99999);
                 Application.DoEvents();
                 Thread.Sleep(60);
 
                 //filenames
                 string folder = txtPath.Text;
+                Directory.CreateDirectory(folder);
                 string prefix = txtPrefix.Text;
                 string suffix = rbDate.Checked ? DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") : indexCounter++.ToString("D4"); //for date name
 
@@ -135,6 +136,10 @@ namespace Snapshot_tool
 
         private void BrowseFolder(object? sender, EventArgs e)
         {
+            if (isRunning)
+            {
+                ToggleMode(); //turn off photo mode if clicking browse
+            }
             using (var fbd = new FolderBrowserDialog())
             {
                 if (fbd.ShowDialog() == DialogResult.OK)
