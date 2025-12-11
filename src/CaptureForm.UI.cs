@@ -49,18 +49,18 @@ namespace Snapshot_tool
             //path selection
             y += 35;
             this.Controls.Add(new Label { Text = "save to:", Location = new Point(15, y + 3), AutoSize = true });
-
+            string defaultPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Snapshots"); //default path
             txtPath = new TextBox
             {
-                Text = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                Text = defaultPath,
                 Location = new Point(60, y),
-                Width = 180,
-                ReadOnly = true
+                Width = 200,
+                ReadOnly = false
             };
             this.Controls.Add(txtPath);
 
             //browse button
-            btnBrowse = new Button { Text = "...", Location = new Point(240, y - 1), Width = 30, Height = 25 };
+            btnBrowse = new Button { Text = "...", Location = new Point(260, y - 1), Width = 30, Height = 25 };
             btnBrowse.Click += BrowseFolder;
             this.Controls.Add(btnBrowse);
 
